@@ -1,0 +1,47 @@
+// ==========================================================================
+// Grid Setup
+//
+// These variables and mixins need to be re-evaluated every time we drop
+// columns at responsive breakpoints, so we re-import inside media queries.
+// ==========================================================================
+
+@buffer: 4 * @columns;
+@content-width: (@columns * (@column + @gutter));
+@total-width: (@buffer * 2 + @content-width);
+
+// Column-widths in variables
+// ==========================================================================
+
+ @1cols: percentage(( 1 * (@column + @gutter) - @gutter) / @total-width);
+ @1col: @1cols;
+ @2cols: percentage(( 2 * (@column + @gutter) - @gutter) / @total-width);
+ @3cols: percentage(( 3 * (@column + @gutter) - @gutter) / @total-width);
+ @4cols: percentage(( 4 * (@column + @gutter) - @gutter) / @total-width);
+ @5cols: percentage(( 5 * (@column + @gutter) - @gutter) / @total-width);
+ @6cols: percentage(( 6 * (@column + @gutter) - @gutter) / @total-width);
+ @7cols: percentage(( 7 * (@column + @gutter) - @gutter) / @total-width);
+ @8cols: percentage(( 8 * (@column + @gutter) - @gutter) / @total-width);
+ @9cols: percentage(( 9 * (@column + @gutter) - @gutter) / @total-width);
+@10cols: percentage((10 * (@column + @gutter) - @gutter) / @total-width);
+@11cols: percentage((11 * (@column + @gutter) - @gutter) / @total-width);
+@12cols: percentage((12 * (@column + @gutter) - @gutter) / @total-width);
+@13cols: percentage((13 * (@column + @gutter) - @gutter) / @total-width);
+@14cols: percentage((14 * (@column + @gutter) - @gutter) / @total-width);
+@15cols: percentage((15 * (@column + @gutter) - @gutter) / @total-width);
+@16cols: percentage((16 * (@column + @gutter) - @gutter) / @total-width);
+
+
+// Column-width mixin
+// ==========================================================================
+.column (@cols: 1) {
+    width: percentage((@cols * (@column + @gutter) - @gutter) / @total-width);
+}
+
+.push (@cols: 1) {
+    margin-left: percentage((@cols * (@column + @gutter) - @gutter) / @total-width);
+}
+
+.pull (@cols: 1) {
+    margin-left: -percentage((@cols * (@column + @gutter) - @gutter) / @total-width)
+}
+

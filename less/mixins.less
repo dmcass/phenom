@@ -1,0 +1,193 @@
+/* TODO: Add missing mixins */
+
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+// Hiding
+// ==========================================================================
+
+// Hide from browsers & screen readers
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+// Hide from browsers only
+.screen-reader {
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+// Clearing
+// ==========================================================================
+
+// Don't use this when you can avoid it with overflow: hidden
+.clearfix () {
+    zoom: 1;
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+    &:after {
+        .clear;
+    }
+}
+
+// Image Replacement
+// ==========================================================================
+
+.ir (@url) {
+    background-image: url("@{url}");
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+}
+
+// CSS Arrows
+// ==========================================================================
+
+#arrow {
+    ._init() {
+        content: '';
+        width: 0;
+        height: 0;
+        margin: 0 5px;
+        display: inline-block;
+        overflow: hidden;
+        border: 5px solid transparent;
+    }
+    .up(@color: @a10) {
+        #arrow > ._init();
+        border-top: 0;
+        border-bottom-color: @color;
+    }
+    .right(@color: @a10) {
+        #arrow > ._init();
+        border-right: 0;
+        border-left-color: @color;
+    }
+    .down(@color: @a10) {
+        #arrow > ._init();
+        border-bottom: 0;
+        border-top-color: @color;
+    }
+    .left(@color: @a10) {
+        #arrow > ._init();
+        border-left: 0;
+        border-right-color: @color;
+    }
+}
+
+// CSS3 Gradients
+// ==========================================================================
+
+#gradient {
+    .vertical(@start, @stop) {
+        background: @stop;
+        background-repeat: no-repeat;
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@start), to(@stop));
+        background-image: -webkit-linear-gradient(top, @start, @stop);
+        background-image:    -moz-linear-gradient(top, @start, @stop);
+        background-image:     -ms-linear-gradient(top, @start, @stop);
+        background-image:      -o-linear-gradient(top, @start, @stop);
+        background-image:         linear-gradient(top, @start, @stop);
+    }
+    .horizontal(@start, @stop) {
+        background: @stop;
+        background-repeat: no-repeat;
+        background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(@start), to(@stop));
+        background-image: -webkit-linear-gradient(top, @start, @stop);
+        background-image:    -moz-linear-gradient(top, @start, @stop);
+        background-image:     -ms-linear-gradient(top, @start, @stop);
+        background-image:      -o-linear-gradient(top, @start, @stop);
+        background-image:         linear-gradient(top, @start, @stop);
+    }
+    .angle(@deg: 45, @start, @stop) {
+        background: @stop;
+        background-repeat: no-repeat;
+        background-image: -webkit-linear-gradient(@deg, @start, @stop);
+        background-image:    -moz-linear-gradient(@deg, @start, @stop);
+        background-image:     -ms-linear-gradient(@deg, @start, @stop);
+        background-image:      -o-linear-gradient(@deg, @start, @stop);
+        background-image:         linear-gradient(@deg, @start, @stop);
+    }
+}
+
+
+// CSS3 Transforms
+// ==========================================================================
+
+#transform {
+    .scale(@x, @y) {
+        -webkit-transform: scale(@x, @y);
+           -moz-transform: scale(@x, @y);
+            -ms-transform: scale(@x, @y);
+             -o-transform: scale(@x, @y);
+                transform: scale(@x, @y);
+    }
+    .rotate(@angle) {
+        -webkit-transform: rotate(@angle);
+           -moz-transform: rotate(@angle);
+            -ms-transform: rotate(@angle);
+             -o-transform: rotate(@angle);
+                transform: rotate(@angle);
+    }
+    .translate(@x, @y) {
+        -webkit-transform: translate(@x, @y);
+           -moz-transform: translate(@x, @y);
+            -ms-transform: translate(@x, @y);
+             -o-transform: translate(@x, @y);
+                transform: translate(@x, @y);
+    }
+    .skew(@xAngle, @yAngle) {
+        -webkit-transform: skew(@xAngle, @yAngle);
+           -moz-transform: skew(@xAngle, @yAngle);
+            -ms-transform: skew(@xAngle, @yAngle);
+             -o-transform: skew(@xAngle, @yAngle);
+                transform: skew(@xAngle, @yAngle);
+    }
+    .matrix(@a, @c, @b, @d, @tx, @ty) {
+        -webkit-transform: matrix(@a, @c, @b, @d, @tx, @ty);
+           -moz-transform: matrix(@a, @c, @b, @d, @tx, @ty);
+            -ms-transform: matrix(@a, @c, @b, @d, @tx, @ty);
+             -o-transform: matrix(@a, @c, @b, @d, @tx, @ty);
+                transform: matrix(@a, @c, @b, @d, @tx, @ty);
+    }
+}
+
+
+// Misc CSS3 Properties
+// ==========================================================================
+
+.border-radius(@radius: 5px) {
+    -webkit-border-radius: @radius;
+       -moz-border-radius: @radius;
+            border-radius: @radius;
+}
+
+.box-shadow(@shadow: 0 0 5px rgba(0, 0, 0, 0.25)) {
+    -webkit-box-shadow: @shadow;
+       -moz-box-shadow: @shadow;
+            box-shadow: @shadow;
+}
+
+.transition(@transition) {
+    -webkit-transition: @transition;
+       -moz-transition: @transition;
+            transition: @transition;
+}
+
+// To be applied to TRs
+.zebra-stripe(@highlight: @v16) {
+    &:nth-child(odd) {
+        background-color: @highlight;
+    }
+}
