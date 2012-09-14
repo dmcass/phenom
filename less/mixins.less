@@ -29,7 +29,7 @@
 // ==========================================================================
 
 // Don't use this when you can avoid it with overflow: hidden
-.clearfix () {
+.cf () {
     zoom: 1;
     &:before,
     &:after {
@@ -110,7 +110,7 @@
         background-image:      -o-linear-gradient(top, @start, @stop);
         background-image:         linear-gradient(top, @start, @stop);
     }
-    .angle(@deg: 45, @start, @stop) {
+    .angle(@start, @stop, @deg: 45deg) {
         background: @stop;
         background-repeat: no-repeat;
         background-image: -webkit-linear-gradient(@deg, @start, @stop);
