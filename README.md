@@ -1,3 +1,2 @@
-Phenom
+phenom
 ======
-*A bare-bones, semantic, responsive CSS framework*
