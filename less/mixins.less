@@ -1,8 +1,4 @@
-/* TODO: Add missing mixins */
-
-// ==========================================================================
-// Mixins
-// ==========================================================================
+// * Mixins * //
 
 // Hiding
 // ==========================================================================
@@ -29,11 +25,11 @@
 // ==========================================================================
 
 // Don't use this when you can avoid it with overflow: hidden
+// on elements that don't have dimensions
 .cf () {
-    zoom: 1;
     &:before,
     &:after {
-        content: '';
+        content: " ";
         display: table;
     }
     &:after {
@@ -46,41 +42,41 @@
 
 .ir (@url) {
     background-image: url("@{url}");
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
+    font: 0/0 a !important;
+    color: transparent !important;
+    text-shadow: none !important;
 }
 
 // CSS Arrows
 // ==========================================================================
 
 #arrow {
-    ._init() {
+    ._init(@s) {
         content: '';
         width: 0;
         height: 0;
         margin: 0 5px;
         display: inline-block;
         overflow: hidden;
-        border: 5px solid transparent;
+        border: @s solid transparent;
     }
-    .up(@color: @a10) {
-        #arrow > ._init();
+    .up(@size, @color) {
+        #arrow > ._init(@size);
         border-top: 0;
         border-bottom-color: @color;
     }
-    .right(@color: @a10) {
-        #arrow > ._init();
+    .right(@size, @color) {
+        #arrow > ._init(@size);
         border-right: 0;
         border-left-color: @color;
     }
-    .down(@color: @a10) {
-        #arrow > ._init();
+    .down(@size, @color) {
+        #arrow > ._init(@size);
         border-bottom: 0;
         border-top-color: @color;
     }
-    .left(@color: @a10) {
-        #arrow > ._init();
+    .left(@size, @color) {
+        #arrow > ._init(@size);
         border-left: 0;
         border-right-color: @color;
     }
@@ -95,71 +91,29 @@
         background-repeat: no-repeat;
         background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@start), to(@stop));
         background-image: -webkit-linear-gradient(top, @start, @stop);
-        background-image:    -moz-linear-gradient(top, @start, @stop);
-        background-image:     -ms-linear-gradient(top, @start, @stop);
-        background-image:      -o-linear-gradient(top, @start, @stop);
-        background-image:         linear-gradient(top, @start, @stop);
+        background-image: -moz-linear-gradient(top, @start, @stop);
+        background-image: -ms-linear-gradient(top, @start, @stop);
+        background-image: -o-linear-gradient(top, @start, @stop);
+        background-image: linear-gradient(top, @start, @stop);
     }
     .horizontal(@start, @stop) {
         background: @stop;
         background-repeat: no-repeat;
         background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(@start), to(@stop));
         background-image: -webkit-linear-gradient(top, @start, @stop);
-        background-image:    -moz-linear-gradient(top, @start, @stop);
-        background-image:     -ms-linear-gradient(top, @start, @stop);
-        background-image:      -o-linear-gradient(top, @start, @stop);
-        background-image:         linear-gradient(top, @start, @stop);
+        background-image: -moz-linear-gradient(top, @start, @stop);
+        background-image: -ms-linear-gradient(top, @start, @stop);
+        background-image: -o-linear-gradient(top, @start, @stop);
+        background-image: linear-gradient(top, @start, @stop);
     }
     .angle(@start, @stop, @deg: 45deg) {
         background: @stop;
         background-repeat: no-repeat;
         background-image: -webkit-linear-gradient(@deg, @start, @stop);
-        background-image:    -moz-linear-gradient(@deg, @start, @stop);
-        background-image:     -ms-linear-gradient(@deg, @start, @stop);
-        background-image:      -o-linear-gradient(@deg, @start, @stop);
-        background-image:         linear-gradient(@deg, @start, @stop);
-    }
-}
-
-
-// CSS3 Transforms
-// ==========================================================================
-
-#transform {
-    .scale(@x, @y) {
-        -webkit-transform: scale(@x, @y);
-           -moz-transform: scale(@x, @y);
-            -ms-transform: scale(@x, @y);
-             -o-transform: scale(@x, @y);
-                transform: scale(@x, @y);
-    }
-    .rotate(@angle) {
-        -webkit-transform: rotate(@angle);
-           -moz-transform: rotate(@angle);
-            -ms-transform: rotate(@angle);
-             -o-transform: rotate(@angle);
-                transform: rotate(@angle);
-    }
-    .translate(@x, @y) {
-        -webkit-transform: translate(@x, @y);
-           -moz-transform: translate(@x, @y);
-            -ms-transform: translate(@x, @y);
-             -o-transform: translate(@x, @y);
-                transform: translate(@x, @y);
-    }
-    .skew(@xAngle, @yAngle) {
-        -webkit-transform: skew(@xAngle, @yAngle);
-           -moz-transform: skew(@xAngle, @yAngle);
-            -ms-transform: skew(@xAngle, @yAngle);
-             -o-transform: skew(@xAngle, @yAngle);
-                transform: skew(@xAngle, @yAngle);
-    }
-    .matrix(@a, @c, @b, @d, @tx, @ty) {
-        -webkit-transform: matrix(@a, @c, @b, @d, @tx, @ty);
-           -moz-transform: matrix(@a, @c, @b, @d, @tx, @ty);
-            -ms-transform: matrix(@a, @c, @b, @d, @tx, @ty);
-             -o-transform: matrix(@a, @c, @b, @d, @tx, @ty);
-                transform: matrix(@a, @c, @b, @d, @tx, @ty);
+        background-image: -moz-linear-gradient(@deg, @start, @stop);
+        background-image: -ms-linear-gradient(@deg, @start, @stop);
+        background-image: -o-linear-gradient(@deg, @start, @stop);
+        background-image: linear-gradient(@deg, @start, @stop);
     }
 }
 
@@ -167,22 +121,24 @@
 // Misc CSS3 Properties
 // ==========================================================================
 
+.box-sizing(@box: content-box) {
+    -webkit-box-sizing: @box;
+    -moz-box-sizing: @box;
+    box-sizing: @box;
+}
+
+// For border-radius shorthand containing slash, you must escape the string using ~""
 .border-radius(@radius: 5px) {
     -webkit-border-radius: @radius;
-       -moz-border-radius: @radius;
-            border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
 }
 
-.box-shadow(@shadow: 0 0 5px rgba(0, 0, 0, 0.25)) {
+// For multiple box shadows, you should use a local variable
+.box-shadow(@shadow) {
     -webkit-box-shadow: @shadow;
-       -moz-box-shadow: @shadow;
-            box-shadow: @shadow;
-}
-
-.transition(@transition) {
-    -webkit-transition: @transition;
-       -moz-transition: @transition;
-            transition: @transition;
+    -moz-box-shadow: @shadow;
+    box-shadow: @shadow;
 }
 
 // To be applied to TRs
@@ -190,4 +146,58 @@
     &:nth-child(odd) {
         background-color: @highlight;
     }
+}
+
+//
+// Background
+//
+
+.background-size(@size) {
+    -webkit-background-size: @size;
+    -moz-background-size: @size;
+    -o-background-size: @size;
+    background-size: @size;
+}
+
+.background-clip(@box: border-box) {
+    -webkit-background-clip: @box;
+    -moz-background-clip: @box;
+    background-clip: @box;
+}
+
+.background-origin(@box: padding-box) {
+    -webkit-background-origin: @box;
+    -moz-background-origin: @box;
+    background-origin: @box;
+}
+
+//
+// Effects
+//
+
+.transform(@transform) {
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -ms-transform: @transform;
+    -o-transform: @transform;
+    transform: @transform;
+}
+
+// For 3D Transforms
+.backface-visibility(@visibility: visible) {
+    -webkit-backface-visibility: @visibility;
+    -moz-backface-visibility: @visibility;
+    backface-visibility: @visibility;
+}
+
+.transition(@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    transition: @transition;
+}
+
+.animation(@animation) {
+    -webkit-animation: @animation;
+    -moz-animation: @animation;
+    animation: @animation;
 }
