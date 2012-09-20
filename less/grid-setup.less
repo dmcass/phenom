@@ -6,8 +6,9 @@
 // layout at others.
 
 
-// The next line should never need to be changed
-@grid-width: (@buffer * 2 + (@columns * (@column + @gutter)));
+// The next two lines should never need to be changed
+@content-width: (@columns * (@column + @gutter));
+@grid-width: (@buffer * 2 + @content-width);
 
 // ==========================================================================
 // Fluid Grid Mixins
@@ -21,19 +22,19 @@
 
 .column (@cols: 1) when (@fluid) {
     float: left;
-    margin-left: percentage((@gutter / 2) / @grid-width);
-    margin-right: percentage((@gutter / 2) / @grid-width);
-    width: percentage((@cols * (@column + @gutter) - @gutter) / @grid-width);
+    margin-left: percentage((@gutter / 2) / @content-width);
+    margin-right: percentage((@gutter / 2) / @content-width);
+    width: percentage((@cols * (@column + @gutter) - @gutter) / @content-width);
 }
 
 .push (@cols: 1) when (@fluid) {
     position: relative;
-    left: percentage((@cols * (@column + @gutter)) / @grid-width);
+    left: percentage((@cols * (@column + @gutter)) / @content-width);
 }
 
 .pull (@cols: 1) when (@fluid) {
     position: relative;
-    right: percentage((@cols * (@column + @gutter)) / @grid-width);
+    right: percentage((@cols * (@column + @gutter)) / @content-width);
 }
 
 // ==========================================================================
