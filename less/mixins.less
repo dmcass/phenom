@@ -85,6 +85,13 @@
 // CSS3 Gradients
 // ==========================================================================
 
+// Because the prefixed syntax for gradients is different than the spec version
+// of gradients, we have to create different versions of the mixin to handle
+// different input and allow for consistent results. We currently assume that
+// the version of gradient being used is the prefix version, but will change to
+// the spec version once browsers support it.
+
+
 // This mixin assumes any number passed to it is a degree since there is no
 // `isdeg` function. We subtract the angle from 90 in prefixed versions
 // in order to ensure future compatibility with the final version of CSS gradients
