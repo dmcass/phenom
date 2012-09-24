@@ -33,7 +33,7 @@
         display: table;
     }
     &:after {
-        .clear;
+        clear: both;
     }
 }
 
@@ -85,38 +85,46 @@
 // CSS3 Gradients
 // ==========================================================================
 
-#gradient {
-    .vertical(@start, @stop) {
-        background: @stop;
-        background-repeat: no-repeat;
-        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@start), to(@stop));
-        background-image: -webkit-linear-gradient(top, @start, @stop);
-        background-image: -moz-linear-gradient(top, @start, @stop);
-        background-image: -ms-linear-gradient(top, @start, @stop);
-        background-image: -o-linear-gradient(top, @start, @stop);
-        background-image: linear-gradient(top, @start, @stop);
-    }
-    .horizontal(@start, @stop) {
-        background: @stop;
-        background-repeat: no-repeat;
-        background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(@start), to(@stop));
-        background-image: -webkit-linear-gradient(top, @start, @stop);
-        background-image: -moz-linear-gradient(top, @start, @stop);
-        background-image: -ms-linear-gradient(top, @start, @stop);
-        background-image: -o-linear-gradient(top, @start, @stop);
-        background-image: linear-gradient(top, @start, @stop);
-    }
-    .angle(@start, @stop, @deg: 45deg) {
-        background: @stop;
-        background-repeat: no-repeat;
-        background-image: -webkit-linear-gradient(@deg, @start, @stop);
-        background-image: -moz-linear-gradient(@deg, @start, @stop);
-        background-image: -ms-linear-gradient(@deg, @start, @stop);
-        background-image: -o-linear-gradient(@deg, @start, @stop);
-        background-image: linear-gradient(@deg, @start, @stop);
-    }
+// This mixin assumes any number passed to it is a degree since there is no
+// `isdeg` function. We subtract the angle from 90 in prefixed versions
+// in order to ensure future compatibility with the final version of CSS gradients
+.linear-gradient(@direction: 0deg, @color-stops) when (isnumber(@direction)) {
+    background-image: -webkit-linear-gradient((90 - @direction), @color-stops);
+    background-image: -moz-linear-gradient((90 - @direction), @color-stops);
+    background-image: -ms-linear-gradient((90 - @direction), @color-stops);
+    background-image: -o-linear-gradient((90 - @direction), @color-stops);
+    background-image: linear-gradient(@direction, @color-stops);
 }
 
+// Single direction gradients
+.linear-gradient(@direction: bottom, @color-stops) when (iskeyword(@direction)) {
+    @top: bottom;
+    @right: left;
+    @bottom: top;
+    @left: right;
+
+    background-image: -webkit-linear-gradient(@direction, @color-stops);
+    background-image: -moz-linear-gradient(@direction, @color-stops);
+    background-image: -ms-linear-gradient(@direction, @color-stops);
+    background-image: -o-linear-gradient(@direction, @color-stops);
+    background-image: linear-gradient(to @@direction, @color-stops);
+}
+
+// Handles smart-corner gradients, like "top left". Multiple directions must
+// be passed as multiple parameters so we can ensure future compatibility with
+// the finalized version of CSS gradients.
+.linear-gradient(@direction1, @direction2, @color-stops) {
+    @top: bottom;
+    @right: left;
+    @bottom: top;
+    @left: right;
+
+    background-image: -webkit-linear-gradient(@direction1 @direction2, @color-stops);
+    background-image: -moz-linear-gradient(@direction1 @direction2, @color-stops);
+    background-image: -ms-linear-gradient(@direction1 @direction2, @color-stops);
+    background-image: -o-linear-gradient(@direction1 @direction2, @color-stops);
+    background-image: linear-gradient(to @@direction1 @@direction2, @color-stops);
+}
 
 // Misc CSS3 Properties
 // ==========================================================================
