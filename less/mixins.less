@@ -72,6 +72,20 @@
     box-sizing: @box;
 }
 
+// Multiple Column Layout
+
+.columns(@c, @gap, @rule) {
+    -webkit-columns: @c;
+    -webkit-column-gap: @gap;
+    -webkit-column-rule: @rule;
+    -moz-columns: @c;
+    -moz-column-gap: @gap;
+    -moz-column-rule: @rule;
+    columns: @c;
+    column-gap: @gap;
+    column-rule: @rule;
+}
+
 // To be applied to TRs
 
 .zebra-stripe(@highlight: @lightest) {
