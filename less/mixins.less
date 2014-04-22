@@ -1,54 +1,19 @@
 // * Mixins * //
 
-// Hiding
-// ==========================================================================
-
-// Hide from browsers & screen readers
-
-.hidden {
-    display: none;
-    visibility: hidden;
-}
-
-// Hide from browsers only
-
-.screen-reader {
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-}
-
-// Clearing
-// ==========================================================================
-
-// Don't use this when you can avoid it with overflow: hidden
-// on elements that don't have dimensions. This should be used
-// almost exclusively as a mixin, never as a class.
-
-.clearfix {
-    &:before,
-    &:after {
-        content: " ";
-        display: table;
-    }
-    &:after {
-        clear: both;
-    }
-}
-
 // Image Replacement
 // ==========================================================================
 
 .ir(@url) {
     background-image: url("@{url}");
-    font: 0/0 a !important;
-    color: transparent !important;
-    text-shadow: none !important;
+    overflow: hidden;
+    border: 0;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 150%;
+    }
 }
 
 // CSS Arrows (Triangles)
