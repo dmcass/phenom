@@ -4,12 +4,14 @@
 // ==========================================================================
 
 // Hide from browsers & screen readers
+
 .hidden {
     display: none;
     visibility: hidden;
 }
 
 // Hide from browsers only
+
 .screen-reader {
     width: 1px;
     height: 1px;
@@ -25,8 +27,10 @@
 // ==========================================================================
 
 // Don't use this when you can avoid it with overflow: hidden
-// on elements that don't have dimensions
-.cf () {
+// on elements that don't have dimensions. This should be used
+// exclusively as a mixin, never as a class.
+
+.clearfix() {
     &:before,
     &:after {
         content: " ";
@@ -40,14 +44,14 @@
 // Image Replacement
 // ==========================================================================
 
-.ir (@url) {
+.ir(@url) {
     background-image: url("@{url}");
     font: 0/0 a !important;
     color: transparent !important;
     text-shadow: none !important;
 }
 
-// CSS Arrows
+// CSS Arrows (Triangles)
 // ==========================================================================
 
 #arrow {
@@ -82,108 +86,20 @@
     }
 }
 
-// CSS3 Gradients
-// ==========================================================================
-
-// Because the prefixed syntax for gradients is different than the spec version
-// of gradients, we have to create different versions of the mixin to handle
-// different input and allow for consistent results. We currently assume that
-// the version of gradient being used is the prefix version, but will change to
-// the spec version once browsers support it.
-
-
-// This mixin assumes any number passed to it is a degree since there is no
-// `isdeg` function. We subtract the angle from 90 in prefixed versions
-// in order to ensure future compatibility with the final version of CSS gradients
-.linear-gradient(@direction: 0deg, @color-stops) when (isnumber(@direction)) {
-    background-image: -webkit-linear-gradient((90 - @direction), @color-stops);
-    background-image: -moz-linear-gradient((90 - @direction), @color-stops);
-    background-image: -ms-linear-gradient((90 - @direction), @color-stops);
-    background-image: -o-linear-gradient((90 - @direction), @color-stops);
-    background-image: linear-gradient(@direction, @color-stops);
-}
-
-// Single direction gradients
-.linear-gradient(@direction: bottom, @color-stops) when (iskeyword(@direction)) {
-    @top: bottom;
-    @right: left;
-    @bottom: top;
-    @left: right;
-
-    background-image: -webkit-linear-gradient(@direction, @color-stops);
-    background-image: -moz-linear-gradient(@direction, @color-stops);
-    background-image: -ms-linear-gradient(@direction, @color-stops);
-    background-image: -o-linear-gradient(@direction, @color-stops);
-    background-image: linear-gradient(to @@direction, @color-stops);
-}
-
-// Handles smart-corner gradients, like "top left". Multiple directions must
-// be passed as multiple parameters so we can ensure future compatibility with
-// the finalized version of CSS gradients.
-.linear-gradient(@direction1, @direction2, @color-stops) {
-    @top: bottom;
-    @right: left;
-    @bottom: top;
-    @left: right;
-
-    background-image: -webkit-linear-gradient(@direction1 @direction2, @color-stops);
-    background-image: -moz-linear-gradient(@direction1 @direction2, @color-stops);
-    background-image: -ms-linear-gradient(@direction1 @direction2, @color-stops);
-    background-image: -o-linear-gradient(@direction1 @direction2, @color-stops);
-    background-image: linear-gradient(to @@direction1 @@direction2, @color-stops);
-}
-
 // Misc CSS3 Properties
 // ==========================================================================
 
 .box-sizing(@box: content-box) {
-    -webkit-box-sizing: @box;
     -moz-box-sizing: @box;
     box-sizing: @box;
 }
 
-// For border-radius shorthand containing slash, you must escape the string using ~""
-.border-radius(@radius: 5px) {
-    -webkit-border-radius: @radius;
-    -moz-border-radius: @radius;
-    border-radius: @radius;
-}
-
-// For multiple box shadows, you should use a local variable
-.box-shadow(@shadow) {
-    -webkit-box-shadow: @shadow;
-    -moz-box-shadow: @shadow;
-    box-shadow: @shadow;
-}
-
 // To be applied to TRs
-.zebra-stripe(@highlight: @v16) {
+
+.zebra-stripe(@highlight: @lightest) {
     &:nth-child(odd) {
         background-color: @highlight;
     }
-}
-
-//
-// Background
-//
-
-.background-size(@size) {
-    -webkit-background-size: @size;
-    -moz-background-size: @size;
-    -o-background-size: @size;
-    background-size: @size;
-}
-
-.background-clip(@box: border-box) {
-    -webkit-background-clip: @box;
-    -moz-background-clip: @box;
-    background-clip: @box;
-}
-
-.background-origin(@box: padding-box) {
-    -webkit-background-origin: @box;
-    -moz-background-origin: @box;
-    background-origin: @box;
 }
 
 //
@@ -192,27 +108,17 @@
 
 .transform(@transform) {
     -webkit-transform: @transform;
-    -moz-transform: @transform;
-    -ms-transform: @transform;
-    -o-transform: @transform;
     transform: @transform;
 }
 
 // For 3D Transforms
+
 .backface-visibility(@visibility: visible) {
     -webkit-backface-visibility: @visibility;
-    -moz-backface-visibility: @visibility;
     backface-visibility: @visibility;
-}
-
-.transition(@transition) {
-    -webkit-transition: @transition;
-    -moz-transition: @transition;
-    transition: @transition;
 }
 
 .animation(@animation) {
     -webkit-animation: @animation;
-    -moz-animation: @animation;
     animation: @animation;
 }
