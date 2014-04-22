@@ -1,5 +1,18 @@
 // * Mixins * //
 
+// @font-face
+// ==========================================================================
+.font-face(@family, @style, @weight, @file) {
+    font-family: @family;
+    font-style: @style;
+    font-weight: @weight;
+    src: url("@{file}.eot");
+    src: url("@{file}.eot?") format("eot"),
+        url("@{file}.woff") format("woff"),
+        url("@{file}.ttf") format("truetype"),
+        url("@{file}.svg#@{family}") format("svg");
+}
+
 // Image Replacement
 // ==========================================================================
 
