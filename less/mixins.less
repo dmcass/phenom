@@ -2,10 +2,10 @@
 
 // @font-face
 // ==========================================================================
-.font-face(@family, @style, @weight, @file) {
-    font-family: @family;
+.font-face(@style, @weight, @family, @file) {
     font-style: @style;
     font-weight: @weight;
+    font-family: @family;
     src: url("@{file}.eot");
     src: url("@{file}.eot?") format("eot"),
         url("@{file}.woff") format("woff"),
