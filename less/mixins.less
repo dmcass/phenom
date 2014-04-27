@@ -8,9 +8,9 @@
     font-family: @family;
     src: url("@{file}.eot");
     src: url("@{file}.eot?") format("eot"),
-        url("@{file}.woff") format("woff"),
-        url("@{file}.ttf") format("truetype"),
-        url("@{file}.svg#@{family}") format("svg");
+         url("@{file}.woff") format("woff"),
+         url("@{file}.ttf") format("truetype"),
+         url("@{file}.svg#@{family}") format("svg");
 }
 
 // Image Replacement
@@ -64,53 +64,9 @@
     }
 }
 
-// Misc CSS3 Properties
-// ==========================================================================
-
-.box-sizing(@box: content-box) {
-    -moz-box-sizing: @box;
-    box-sizing: @box;
-}
-
-// Multiple Column Layout
-
-.columns(@c, @gap, @rule) {
-    -webkit-columns: @c;
-    -webkit-column-gap: @gap;
-    -webkit-column-rule: @rule;
-    -moz-columns: @c;
-    -moz-column-gap: @gap;
-    -moz-column-rule: @rule;
-    columns: @c;
-    column-gap: @gap;
-    column-rule: @rule;
-}
-
 // To be applied to TRs
-
 .zebra-stripe(@highlight: @lightest) {
     &:nth-child(odd) {
         background-color: @highlight;
     }
-}
-
-//
-// Effects
-//
-
-.transform(@transform) {
-    -webkit-transform: @transform;
-    transform: @transform;
-}
-
-// For 3D Transforms
-
-.backface-visibility(@visibility: visible) {
-    -webkit-backface-visibility: @visibility;
-    backface-visibility: @visibility;
-}
-
-.animation(@animation) {
-    -webkit-animation: @animation;
-    animation: @animation;
 }
