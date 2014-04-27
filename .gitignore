@@ -1,0 +1,41 @@
+# MacOS X
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+
+# Linux
+.directory
+*~
+
+# SublimeText
+*.sublime-workspace
+*.sublime-project
+sftp-config.json
+
+# Eclipse
+.metadata
+.project
+.settings/
+*.tmp
+*.bak
+*.swp
+
+# TextMate
+*.tmproj
+*.tmproject
+tmtags
+
+# Espresso
+*.esproj
+
+# node
+node_modules/
+
+# Miscellaneous
+*.diff
+*.log
