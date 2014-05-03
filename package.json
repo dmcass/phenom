@@ -1,0 +1,28 @@
+{
+  "name": "phenom",
+  "version": "0.3.0",
+  "description": "A bare-bones, semantic, responsive CSS framework",
+  "keywords": [
+    "less",
+    "css",
+    "semantic",
+    "responsive",
+    "framework"
+  ],
+  "homepage": "https://github.com/dmcass/phenom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmcass/phenom.git"
+  },
+  "author": "Dustin M. Cass",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-autoprefixer": "~0.7.3",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-csscomb": "~2.0.1"
+  },
+  "engines": {
+    "node": "~0.10.26"
+  }
+}
