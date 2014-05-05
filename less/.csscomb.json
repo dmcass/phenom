@@ -113,6 +113,8 @@
             "text-transform",
             "text-underline-position",
             "text-wrap",
+            "-webkit-text-size-adjust",
+            "-ms-text-size-adjust",
             "hyphens",
             "letter-spacing",
             "line-break",
