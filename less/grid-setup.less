@@ -15,26 +15,26 @@
 // ==========================================================================
 
 .row (@cols: @columns) when (@cols = @columns) and (@fluid) {
-    padding-left: percentage(@buffer / @grid-width);
-    padding-right: percentage(@buffer / @grid-width);
+    padding-left: percentage((@buffer / @grid-width));
+    padding-right: percentage((@buffer / @grid-width));
     overflow: hidden;
 }
 
 .column (@cols: 1) when (@fluid) {
     float: left;
-    margin-left: percentage((@gutter / 2) / @content-width);
-    margin-right: percentage((@gutter / 2) / @content-width);
-    width: percentage((@cols * (@column + @gutter) - @gutter) / @content-width);
+    margin-left: percentage(((@gutter / 2) / @content-width));
+    margin-right: percentage(((@gutter / 2) / @content-width));
+    width: percentage(((@cols * (@column + @gutter) - @gutter) / @content-width));
 }
 
 .push (@cols: 1) when (@fluid) {
     position: relative;
-    left: percentage((@cols * (@column + @gutter)) / @content-width);
+    left: percentage(((@cols * (@column + @gutter)) / @content-width));
 }
 
 .pull (@cols: 1) when (@fluid) {
     position: relative;
-    right: percentage((@cols * (@column + @gutter)) / @content-width);
+    right: percentage(((@cols * (@column + @gutter)) / @content-width));
 }
 
 // ==========================================================================

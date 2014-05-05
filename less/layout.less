@@ -37,7 +37,7 @@
 .clearfix {
     &:before,
     &:after {
-        content: " ";
+        content: ' ';
         display: table;
     }
     &:after {
@@ -45,3 +45,93 @@
     }
 }
 
+// phenom docs
+// ==========================================================================
+
+.wrapper {
+    max-width: @max-width;
+    margin: 0 auto;
+}
+
+// Grid Demo
+
+.grid {
+    margin: 1em 0;
+    border: 1px solid #ccc;
+
+    ul {
+        .row();
+        height: 314px;
+        margin: 0;
+        list-style: none;
+        background-color: #d2d2d2;
+    }
+
+    li {
+        .column();
+        height: 100%;
+        background-color: #f8d2d2;
+
+        &:nth-child(n+7) {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    @columns: 8;
+    @buffer: (4 * @columns);
+    @import (multiple) 'grid-setup';
+
+    .grid {
+        ul {
+            .row();
+
+            &:before,
+            &:after {
+                content: '';
+                width: percentage((@buffer / @content-width));
+                height: 100%;
+                float: left;
+                background-color: #a1f1b9;
+                background-image: repeating-linear-gradient(135deg, transparent, transparent 5px, rgba(0, 0, 0, 0.05) 5px, rgba(0, 0, 0, 0.05) 10px);
+            }
+
+            &:before {
+                margin-left: percentage((-@buffer / @content-width));
+            }
+
+            &:after {
+                margin-right: percentage((-@buffer / @content-width));
+            }
+        }
+
+        li {
+            .column();
+
+            &:nth-child(n) {
+                display: block;
+            }
+
+            &:nth-child(n+9) {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    @columns: 12;
+    @buffer: (4 * @columns);
+    @import (multiple) 'grid-setup';
+
+    .grid {
+        li {
+            .column();
+
+            &:nth-child(n) {
+                display: block;
+            }
+        }
+    }
+}

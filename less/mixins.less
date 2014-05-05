@@ -6,18 +6,18 @@
     font-style: @style;
     font-weight: @weight;
     font-family: @family;
-    src: url("@{file}.eot");
-    src: url("@{file}.eot?") format("eot"),
-         url("@{file}.woff") format("woff"),
-         url("@{file}.ttf") format("truetype"),
-         url("@{file}.svg#@{family}") format("svg");
+    src: url('@{file}.eot');
+    src: url('@{file}.eot?') format('eot'),
+         url('@{file}.woff') format('woff'),
+         url('@{file}.ttf') format('truetype'),
+         url('@{file}.svg#@{family}') format('svg');
 }
 
 // Image Replacement
 // ==========================================================================
 
 .ir(@url) {
-    background-image: url("@{url}");
+    background-image: url('@{url}');
     overflow: hidden;
     border: 0;
 
