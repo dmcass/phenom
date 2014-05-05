@@ -210,6 +210,9 @@ th {
   max-width: 1200px;
   margin: 0 auto;
 }
+.demo {
+  margin: 1em 0;
+}
 .grid {
   margin: 1em 0;
 }
@@ -233,7 +236,7 @@ th {
 .grid li:nth-child(n+7) {
   display: none;
 }
-.vert {
+.vertical-rhythm {
   background: url('images/baseline.png') left top repeat;
 }
 @media only screen and (min-width: 600px) {
