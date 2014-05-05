@@ -77,10 +77,19 @@
     }
 }
 
+.vert {
+    background: url('images/baseline.png') left top repeat;
+}
+
 @media only screen and (min-width: 600px) {
     @columns: 8;
     @buffer: (4 * @columns);
     @import (multiple) 'grid-setup';
+
+    // phenom docs
+    // ==========================================================================
+
+    // Grid Demo
 
     .grid {
         ul {
@@ -123,6 +132,11 @@
     @columns: 12;
     @buffer: (4 * @columns);
     @import (multiple) 'grid-setup';
+
+    // phenom docs
+    // ==========================================================================
+
+    // Grid Demo
 
     .grid {
         li {

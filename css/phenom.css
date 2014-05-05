@@ -233,6 +233,9 @@ th {
 .grid li:nth-child(n+7) {
   display: none;
 }
+.vert {
+  background: url('images/baseline.png') left top repeat;
+}
 @media only screen and (min-width: 600px) {
   .grid ul {
     padding-left: 4%;
