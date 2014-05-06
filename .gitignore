@@ -39,6 +39,3 @@ node_modules/
 # Miscellaneous
 *.diff
 *.log
-
-# Generated
-css/
